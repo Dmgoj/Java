@@ -14,7 +14,9 @@ public class Launcher
         match.setSchedule(2023,3,30,12,00);
         System.out.println("Time of "+ match.getName() + " match is " + match.getSchedule());
 
-        
+        // Creates a new Athlete object
+        Athlete athlete = new Athlete("Domagoj", "Grgić", 6, 1988,1,6);
+        System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
 
     }
 }
