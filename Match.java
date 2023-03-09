@@ -9,12 +9,17 @@ public class Match
     private LocalDateTime schedule;
     private boolean cancelled = false;
 
-    // Creates constructor
+    // Creates default constructor
+    public Match()
+    {
+
+    }
+
+    // Creates parameterized constructor
     public Match(String name, int year, int month, int dayOfMonth, int hour, int minute)
     {
         this.name = name; 
         this.schedule = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-        this.cancelled = cancelled;
     }
     
     // name setter

@@ -11,13 +11,17 @@ public class Athlete
     private int athleteNumber;
     private LocalDate dateOfBirth;
 
-    // creates Athlete constructor
-    public Athlete(String name, String surname, int athleteNumber, int year, int month, int dayOfMonth)
+    // creates default constructor
+    public Athlete()
+    {
+
+    }
+
+    // Creates parameterized constructor
+    public Athlete(String name, String surname)
     {
         this.name = name;
         this.surname = surname;
-        this.athleteNumber = athleteNumber;
-        this.dateOfBirth = LocalDate.of(year, month, dayOfMonth);
     }
     
     // name setter

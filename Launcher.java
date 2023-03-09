@@ -15,7 +15,9 @@ public class Launcher
         System.out.println("Time of "+ match.getName() + " match is " + match.getSchedule());
 
         // Creates a new Athlete object
-        Athlete athlete = new Athlete("Domagoj", "Grgić", 6, 1988,1,6);
+        Athlete athlete = new Athlete("Domagoj", "Grgić");
+        athlete.setAthleteNumber(6);
+        athlete.setDateOfBirth(1988,1,6);
         System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
         athlete.setName("Luka");
         athlete.setSurname("Dončić");
