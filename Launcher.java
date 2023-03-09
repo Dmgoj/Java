@@ -17,6 +17,11 @@ public class Launcher
         // Creates a new Athlete object
         Athlete athlete = new Athlete("Domagoj", "Grgić", 6, 1988,1,6);
         System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
+        athlete.setName("Luka");
+        athlete.setSurname("Dončić");
+        athlete.setAthleteNumber(77); 
+        athlete.setDateOfBirth(1999,2,28);
+        System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
 
     }
 }
