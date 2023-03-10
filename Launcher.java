@@ -31,7 +31,7 @@ public class Launcher
 
         // Call canCompete method
         System.out.println(match.canCompete(athlete));
-        System.out.println (match.canCompete(athlete) ? "Athlete can compete." :"Athlete can not compete!");
+        System.out.println (match.canCompete(athlete) ? athlete.getName() + " " + athlete.getSurname() + " can compete." : athlete.getName() + " " + athlete.getSurname() + " can not compete!");
 
         
 
