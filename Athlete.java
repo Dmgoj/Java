@@ -1,6 +1,6 @@
-// Imports java.time package
+// Imports java.time s
 import java.time.*;
-import java.time.format.*;
+//import java.time.format.*;
 
 // Creates class Athlete
 public class Athlete
@@ -11,7 +11,7 @@ public class Athlete
     private int athleteNumber;
     private LocalDate dateOfBirth;
 
-    // creates default constructor
+    // Creates default constructor
     public Athlete()
     {
 
@@ -67,9 +67,9 @@ public class Athlete
     }
 
     // dateOfBirth getter
-    public String getDateOfBirth()
+    public LocalDate getDateOfBirth()
     {
-        return dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return dateOfBirth;
     }
 
 }

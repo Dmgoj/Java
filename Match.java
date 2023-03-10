@@ -58,5 +58,12 @@ public class Match
         return cancelled;
     }
 
+    // Checks if athlete can compete based on dateOfBirth
+        public boolean canCompete(Athlete athlete)
+        {
+            int age = Period.between(athlete.getDateOfBirth(), LocalDate.now()).getYears();
+            return (age >= 14 && age <= 18);
+        }
+
 
 }
