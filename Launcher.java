@@ -12,7 +12,7 @@ public class Launcher
         match.setName("Football");
         match.setSchedule(2023,3,30,10,00);
         System.out.println(match.getName()+ " match happens on " + match.getSchedule() + " if it is not cancelled! ");
-
+       
         
         // Creates a new Athlete object
         Athlete athlete = new Athlete("Luka", "Dončić");
@@ -33,7 +33,7 @@ public class Launcher
         System.out.println(match.canCompete(athlete));
         System.out.println (match.canCompete(athlete) ? athlete.getName() + " " + athlete.getSurname() + " can compete." : athlete.getName() + " " + athlete.getSurname() + " can not compete!");
 
+        match.addAthleteToMatch(athlete);
         
-
     }
 }

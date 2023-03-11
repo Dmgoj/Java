@@ -18,7 +18,7 @@ public class Training
     }
 
     // Creates parameterized constructor
-     public Training(String name)
+    public Training(String name)
     {
         this.name = name;
     }

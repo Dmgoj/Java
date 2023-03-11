@@ -1,5 +1,6 @@
 // Imports java.time package
 import java.time.*;
+import java.util.*;
 
 // Creates class Match
 public class Match
@@ -8,6 +9,8 @@ public class Match
     private String name;
     private LocalDateTime schedule;
     private boolean cancelled = false;
+    private String athletesList[] = new String[10];
+    public int i;
 
     // Creates default constructor
     public Match()
@@ -59,11 +62,20 @@ public class Match
     }
 
     // Checks if athlete can compete based on dateOfBirth
-        public boolean canCompete(Athlete athlete)
-        {
-            int age = Period.between(athlete.getDateOfBirth(), LocalDate.now()).getYears();
-            return (age >= 14 && age <= 18);
-        }
+    public boolean canCompete(Athlete athlete)
+    {
+        int age = Period.between(athlete.getDateOfBirth(), LocalDate.now()).getYears();
+        return (age >= 14 && age <= 18);
+    }
 
+    // Adds an athlete to the match (athletesList array)
+    public void addAthleteToMatch(Athlete athlete)
+    {
+        String athleteName = athlete.getName() + " " + athlete.getSurname();
+        for (i=0; i<athletesList.length; i++) {
+            if (athletesList[i] == null) {athletesList[i] = athleteName; 
+            break; }
+        } 
+    }
 
 }
