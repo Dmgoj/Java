@@ -15,10 +15,21 @@ public class Launcher
        
         
         // Creates a new Athlete object
-        Athlete athlete = new Athlete("Luka", "Dončić");
+        Athlete athlete = new Athlete("Luka", "Doncic");
         athlete.setAthleteNumber(77);
         athlete.setDateOfBirth(1999,2,28);
         System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
+        
+        /* Athlete athlete1 = new Athlete("ivan ", "grgic");
+        Athlete athlete2 = new Athlete("pero ", "zderic");
+        Athlete athlete3 = new Athlete("roki", "balboa");
+        Athlete athlete4 = new Athlete("stojane", "dnevnik");
+        Athlete athlete5 = new Athlete("urose", "ursuse");
+        Athlete athlete6 = new Athlete("vakula", "vremenko");
+        Athlete athlete7 = new Athlete("zoki", "milanovic");
+        Athlete athlete8 = new Athlete("akrap", "lepi");
+        Athlete athlete9 = new Athlete("belegija", "jansa");
+        Athlete[] athletes ={athlete,athlete1}; */
         
         // Creates a new Training object
         Training training = new Training("Basketball");
@@ -33,7 +44,8 @@ public class Launcher
         System.out.println(match.canCompete(athlete));
         System.out.println (match.canCompete(athlete) ? athlete.getName() + " " + athlete.getSurname() + " can compete." : athlete.getName() + " " + athlete.getSurname() + " can not compete!");
 
-        match.addAthleteToMatch(athlete);
+        match.addAthleteToMatch(athletes);
+        //match.
         
     }
 }

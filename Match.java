@@ -68,7 +68,7 @@ public class Match
         return (age >= 14 && age <= 18);
     }
 
-    // Adds an athlete to the match (athletesList array)
+    // Adds an athlete to the match (from athletesList array)
     public void addAthleteToMatch(Athlete athlete)
     {
         String athleteName = athlete.getName() + " " + athlete.getSurname();
@@ -76,6 +76,15 @@ public class Match
             if (athletesList[i] == null) {athletesList[i] = athleteName; 
             break; }
         } 
+    }
+
+    // Removes an athlete from the match (from athletesList array)
+    public void removeAthleteFromMatch(Athlete)
+    {
+        String athleteName = athlete.getName() + " " + athlete.getSurname();
+        for (i=0; i<athletesList.length; i++) {
+            if(athletesList[i] == athleteName) {athletesList[i] = null;}
+        }
     }
 
 }
