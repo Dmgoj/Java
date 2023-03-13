@@ -9,7 +9,7 @@ public class Match
     private String name;
     private LocalDateTime schedule;
     private boolean cancelled = false;
-    private String athletesList[] = new String[10];
+    private String[] athletesList = new String[10];
     public int i;
 
     // Creates default constructor
@@ -76,15 +76,18 @@ public class Match
             if (athletesList[i] == null) {athletesList[i] = athleteName; 
             break; }
         } 
+        System.out.println(Arrays.toString(this.athletesList));
+
     }
 
     // Removes an athlete from the match (from athletesList array)
-    public void removeAthleteFromMatch(Athlete)
+    public void removeAthleteFromMatch(Athlete athlete)
     {
         String athleteName = athlete.getName() + " " + athlete.getSurname();
         for (i=0; i<athletesList.length; i++) {
-            if(athletesList[i] == athleteName) {athletesList[i] = null;}
+            if(athletesList[i].equals(athleteName)) {athletesList[i] = null;}
         }
+        System.out.println(Arrays.toString(this.athletesList));
     }
 
 }
