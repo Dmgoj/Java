@@ -26,11 +26,11 @@ public class Launcher
         Athlete athlete2 = new Athlete("pero ", "zderic");
         Athlete athlete3 = new Athlete("roki", "balboa");
         Athlete athlete4 = new Athlete("stojane", "dnevnik");
-        Athlete athlete5 = new Athlete("urose", "ursuse");
+        Athlete athlete5 = new Athlete("uros", "ursus");
         Athlete athlete6 = new Athlete("vakula", "vremenko");
         Athlete athlete7 = new Athlete("zoki", "milanovic");
         Athlete athlete8 = new Athlete("akrap", "lepi");
-        Athlete athlete9 = new Athlete("belegija", "jansa");
+        Athlete athlete9 = new Athlete("janez", "jansa");
         //Athlete[] athletes ={athlete,athlete1};
         
         // Creates a new Training object
@@ -58,6 +58,8 @@ public class Launcher
         match.addAthleteToMatch(athlete9);
         
         match.removeAthleteFromMatch(athlete);
+
+        System.out.println(match.toString());
         
     }
 }
