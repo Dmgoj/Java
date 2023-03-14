@@ -87,7 +87,7 @@ public class Match
         for (i=0; i<athletesList.length; i++) {
             if(athletesList[i].equals(athlete)) {athletesList[i] = null;}
         }
-        System.out.println(Arrays.toString(athletesList));
+        
     }
 
     // Removes an athlete from the match by athleteNumber

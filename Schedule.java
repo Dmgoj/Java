@@ -21,12 +21,8 @@ public class Schedule
     	this.dateTime = dateTime;
     }
 
-    // Creates parameterised constructor
-    public Schedule(int year, int month, int dayOfMonth, int hour, int minute)
-    {
-        this.dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-    }
-
+   
+    // schedule setter
     public void setDateTime (LocalDateTime DateTime)
     {
         this.dateTime = DateTime;
