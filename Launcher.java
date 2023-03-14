@@ -11,7 +11,7 @@ public class Launcher
         // Create a new Match object using default constructor
         Match match = new Match();
         match.setName("Football");
-        match.setSchedule(2023,3,30,10,00);
+        
         System.out.println(match.getName()+ " match happens on " + match.getSchedule() + " if it is not cancelled! ");
        
         
@@ -35,13 +35,14 @@ public class Launcher
         
         // Creates a new Training object
         Training training = new Training("Basketball");
-        training.setSchedule(30,3,30,10,30);
+        //training.setSchedule();
         training.setTrainerName("Championmaker");
 
 
         // Creates a new Schedule object
-        Schedule schedule = new Schedule(2023,3,25,10,00);
-
+        Schedule schedule = new Schedule(LocalDateTime.of(2023, 2, 2, 10, 00));
+        match.setSchedule(schedule);
+        System.out.println(match.toString());
         // Call canCompete method
         System.out.println(match.canCompete(athlete));
         System.out.println (match.canCompete(athlete) ? athlete.getName() + " " + athlete.getSurname() + " can compete." : athlete.getName() + " " + athlete.getSurname() + " can not compete!");
@@ -57,9 +58,9 @@ public class Launcher
         match.addAthleteToMatch(athlete8);
         match.addAthleteToMatch(athlete9);
         
-        match.removeAthleteFromMatch(athlete);
+        //match.removeAthleteFromMatch(athlete);
 
-        System.out.println(match.toString());
+        //System.out.println(match.toString());
         
     }
 }

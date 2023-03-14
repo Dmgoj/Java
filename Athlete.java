@@ -17,7 +17,7 @@ public class Athlete
 
     }
 
-    // Creates parameterized constructor
+    // Creates parameterised constructor
     public Athlete(String name, String surname)
     {
         this.name = name;

@@ -14,22 +14,33 @@ public class Schedule
     {
 
     }
+    
+    // Creates parameterised constructor
+    public Schedule(LocalDateTime dateTime)
+    {
+    	this.dateTime = dateTime;
+    }
 
-    // Creates parameterized constructor
+    // Creates parameterised constructor
     public Schedule(int year, int month, int dayOfMonth, int hour, int minute)
     {
         this.dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
-    public void setDateTime (int year, int month, int dayOfMonth, int hour, int minute)
+    public void setDateTime (LocalDateTime DateTime)
     {
-        this.dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        this.dateTime = DateTime;
     }
 
     // schedule getter
     public LocalDateTime getDateTime()
     {
         return dateTime;
+    }
+    
+    public String toString()
+    {
+    	return "Schdele is " + this.dateTime;
     }
 
 }

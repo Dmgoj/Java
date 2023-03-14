@@ -7,9 +7,9 @@ public class Match
 {
     // Declare attributes
     private String name;
-    private LocalDateTime schedule;
+    private Schedule schedule;
     private boolean cancelled = false;
-    private String[] athletesList = new String[10];
+    private Athlete[] athletesList = new Athlete[10];
     public int i;
 
     // Creates default constructor
@@ -18,11 +18,11 @@ public class Match
 
     }
 
-    // Creates parameterized constructor
-    public Match(String name, int year, int month, int dayOfMonth, int hour, int minute)
+    // Creates parameterised constructor
+    public Match(String name, Schedule schedule)
     {
         this.name = name; 
-        this.schedule = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        this.schedule = schedule;
     }
     
     // name setter
@@ -38,13 +38,13 @@ public class Match
     }
 
     // schedule setter
-    public void setSchedule (int year, int month, int dayOfMonth, int hour, int minute)
+    public void setSchedule (Schedule schedule)
     {
-        this.schedule = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        this.schedule = schedule;
     }
 
     // schedule getter
-    public LocalDateTime getSchedule()
+    public Schedule getSchedule()
     {
         return schedule;
     }
@@ -71,9 +71,9 @@ public class Match
     // Adds an athlete to the match (from athletesList array)
     public void addAthleteToMatch(Athlete athlete)
     {
-        String athleteName = athlete.getName() + " " + athlete.getSurname();
+       //String athleteName = athlete.getName() + " " + athlete.getSurname();
         for (i=0; i<athletesList.length; i++) {
-            if (athletesList[i] == null) {athletesList[i] = athleteName; 
+            if (athletesList[i] == null) {athletesList[i] = athlete; 
             break; }
         } 
         System.out.println(Arrays.toString(this.athletesList));
@@ -83,9 +83,9 @@ public class Match
     // Removes an athlete from the match (from athletesList array)
     public void removeAthleteFromMatch(Athlete athlete)
     {
-        String athleteName = athlete.getName() + " " + athlete.getSurname();
+        //String athleteName = athlete.getName() + " " + athlete.getSurname();
         for (i=0; i<athletesList.length; i++) {
-            if(athletesList[i].equals(athleteName)) {athletesList[i] = null;}
+            if(athletesList[i].equals(athlete)) {athletesList[i] = null;}
         }
         System.out.println(Arrays.toString(athletesList));
     }

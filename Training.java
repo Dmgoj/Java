@@ -7,7 +7,7 @@ public class Training
 {
     // Sets attributes
     private String name;
-    private LocalDateTime schedule;
+    private Schedule schedule;
     private String trainerName;
     private boolean cancelled = false;
 
@@ -17,7 +17,7 @@ public class Training
 
     }
 
-    // Creates parameterized constructor
+    // Creates parameterised constructor
     public Training(String name)
     {
         this.name = name;
@@ -36,13 +36,13 @@ public class Training
     }
 
     // schedule setter
-    public void setSchedule (int year, int month, int dayOfMonth, int hour, int minute)
+    public void setSchedule (Schedule schedule)
     {
-        this.schedule = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        this.schedule = schedule;
     }
 
     // schedule getter
-    public LocalDateTime getSchedule()
+    public Schedule getSchedule()
     {
         return schedule;
     }
