@@ -22,8 +22,8 @@ public class Launcher
         athlete.setDateOfBirth(1999,2,28);
         System.out.println(athlete.getName() + athlete.getSurname() +" is born on " + athlete.getDateOfBirth() + " and wears number " + athlete.getAthleteNumber());
        
-        Athlete athlete1 = new Athlete("ivan ", "grgic");
-        Athlete athlete2 = new Athlete("pero ", "zderic");
+        Athlete athlete1 = new Athlete("ivan", "grgic");
+        Athlete athlete2 = new Athlete("pero", "zderic");
         Athlete athlete3 = new Athlete("roki", "balboa");
         Athlete athlete4 = new Athlete("stojane", "dnevnik");
         Athlete athlete5 = new Athlete("uros", "ursus");
@@ -58,9 +58,10 @@ public class Launcher
         match.addAthleteToMatch(athlete8);
         match.addAthleteToMatch(athlete9);
         
-        //match.removeAthleteFromMatch(athlete);
+        match.removeAthleteFromMatch(athlete2);
+        match.removeAthleteFromMatch(77);
 
-        //System.out.println(match.toString());
         
+        System.out.println(match.athleteExists("Doncic"));
     }
 }

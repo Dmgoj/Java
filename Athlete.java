@@ -24,6 +24,13 @@ public class Athlete
         this.surname = surname;
     }
     
+    public Athlete(String name, String surname, int athleteNumber, LocalDate dateOfBirth)
+    {
+    	this(name,surname);
+    	this.athleteNumber = athleteNumber;
+    	this.dateOfBirth = dateOfBirth;
+    }
+    
     // name setter
     public void setName(String name)
     {
@@ -70,6 +77,12 @@ public class Athlete
     public LocalDate getDateOfBirth()
     {
         return dateOfBirth;
+    }
+    
+    @Override
+    public String toString()
+    {
+    	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " ";
     }
 
 }

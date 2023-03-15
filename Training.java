@@ -71,4 +71,10 @@ public class Training
         return cancelled;
     }
     
+    @Override
+    public String toString()
+    {
+    	return name + schedule + trainerName + cancelled + " ";
+    }
+    
 }

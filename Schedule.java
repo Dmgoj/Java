@@ -36,7 +36,7 @@ public class Schedule
     
     public String toString()
     {
-    	return "Schdele is " + this.dateTime;
+    	return dateTime.format(DateTimeFormatter.ofPattern("dd MM yyyy")) + " ";
     }
 
 }

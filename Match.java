@@ -91,27 +91,31 @@ public class Match
     }
 
     // Removes an athlete from the match by athleteNumber
- /*    public boolean removeAthleteFromMatch(int athleteNumber)
+    public boolean removeAthleteFromMatch(int athleteNumber)
     {
-        int athleteNumber = athlete.getAthleteNumber();
+        
         for (i=0; i<athletesList.length; i++) {
-            if(athletesList[i].equals(athleteName)) {athletesList[i] = null;}
-        }
-        System.out.println(Arrays.toString(athletesList));
+            if(athletesList[i]!=null && athletesList[i].getAthleteNumber() == athleteNumber) {athletesList[i] = null;}
+        } 
+        return true;
     }
 
     // Checks if an athlete with a specific last name has been added to the match
     public boolean athleteExists(String lastName)
     {
-
-    } */
+    	
+    	for (i=0; i<athletesList.length; i++) {
+    		if(athletesList[i] != null && athletesList[i].getSurname().equals(lastName)) {return true;}
+         } 
+    	return false;
+         
+    }
 
     // Outputs all attributes as a string
     @Override
     public String toString()
     {
-        return "Name of the match is " + name + " is scheduled on " + schedule +
-        ". Is it cancelled = " + cancelled + " Athletes are: " + Arrays.toString(athletesList);
+        return name + " " + schedule + " " + cancelled + " " + Arrays.toString(athletesList) + " ";
     }
     
     

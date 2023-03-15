@@ -15,6 +15,12 @@ public class Venue
     {
         this.name = name;
     }
+    
+    public Venue(String name, String phoneNumber)
+    {
+    	this(name);
+    	this.phoneNumber = phoneNumber;
+    }
 
 
 }
