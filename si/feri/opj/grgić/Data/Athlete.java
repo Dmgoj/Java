@@ -1,11 +1,15 @@
-// Adds Athlete class package si.feri.opj.grgić.Data
+// Adds Athlete class to the package si.feri.opj.grgić.Data
 package si.feri.opj.grgić.Data;
 
 // Imports java.time s
 import java.time.*;
-//import java.time.format.*;
 
-// Creates class Athlete
+/**
+ * Athlete class represents an Athlete with name, surname, athlete number and date of birth.
+ * Class contains methods to set and get athlete's name,surname, number and date of birth.
+ * 
+ * @author Domagoj Grgić
+ */
 public class Athlete
 {
     // Sets attributes
@@ -14,19 +18,35 @@ public class Athlete
     private int athleteNumber;
     private LocalDate dateOfBirth;
 
-    // Creates default constructor
+    /**
+     * Default constructor that creates a new Athlete object
+     */
     public Athlete()
     {
 
     }
 
-    // Creates parameterised constructor
+    /**
+     * Parameterised constructor that creates a new Athlete object with specified name and surname
+     *
+     *@param name - athletes name
+     *@param surname - athletes surname
+     */ 
     public Athlete(String name, String surname)
     {
         this.name = name;
         this.surname = surname;
     }
-    
+
+    /**
+     * Parameterised constructor that creates a new Athlete object with specified name, surname,
+     * athlete number and date of birth
+     *
+     * @param name - athlete's name
+     * @param surname - athlete's surname
+     * @param athleteNumber - athlete's number
+     * @param dateOfBirth - athlete's date of birth
+     */     
     public Athlete(String name, String surname, int athleteNumber, LocalDate dateOfBirth)
     {
     	this(name,surname);
@@ -34,58 +54,96 @@ public class Athlete
     	this.dateOfBirth = dateOfBirth;
     }
     
-    // name setter
+    /**
+     * Sets the athlete's name
+     *
+     * @param name - athlete's name
+     */ 
     public void setName(String name)
     {
         this.name = name;
     }
 
-    // name getter
+    /**
+     * Gets the athlete's name
+     *
+     * @return name of the athlete
+     */ 
     public String getName()
     {
         return name;
     }
 
-    // surname setter
+    /**
+     * Sets the athlete's surname 
+     *
+     * @param surname - athlete's surname
+     */ 
     public void setSurname(String surname)
     {
         this.surname = surname;
     }
 
-    // surname getter
+    /**
+     * Gets the athlete's surname
+     *
+     * @return surname of the athlete
+     */ 
     public String getSurname()
     {
         return surname;
     }
 
-    // athleteNumber setter
+    /**
+     * Sets the athlete's number 
+     *
+     * @param ahtleteNumber - athlete's number
+     */ 
     public void setAthleteNumber(int athleteNumber)
     {
         this.athleteNumber = athleteNumber;
     }
 
-    // athleteNumber getter
+    /**
+     *Gets the athlete's number
+     *
+     * @return athlete's number
+     */ 
     public int getAthleteNumber()
     {
         return athleteNumber;
     }
 
-    // dateOfBirth setter
+     /**
+     * Sets the athlete's date of birth
+     *
+     * @param year - athlete's year of birth
+     * @param month - athlete's month of birth
+     * @param dayOfMonth - athlete's day of birth
+     */ 
     public void setDateOfBirth(int year, int month, int dayOfMonth)
     {
         this.dateOfBirth = LocalDate.of(year,month,dayOfMonth);
     }
 
-    // dateOfBirth getter
+    /**
+     *Gets the athlete's date of birth
+     *
+     * @return athlete's date of birth
+     */ 
     public LocalDate getDateOfBirth()
     {
         return dateOfBirth;
     }
     
+    /**
+     * Overrides toString method
+     *
+     * @return string containing athlete's name, surname, number and date of birth.
+     */
     @Override
     public String toString()
     {
     	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " ";
     }
-
 }
