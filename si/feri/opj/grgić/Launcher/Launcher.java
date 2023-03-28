@@ -94,6 +94,6 @@ public class Launcher
         
         Match match1 = new Match();
        
-        Hall hall = new Hall(5);
+        Hall hall = new Hall();
     }
 }
