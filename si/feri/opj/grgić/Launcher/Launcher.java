@@ -89,5 +89,11 @@ public class Launcher
         match.removeAthleteFromMatch(77);
 
         System.out.println(match.athleteExists("Doncic"));
+        
+       
+        
+        Match match1 = new Match();
+       
+        Hall hall = new Hall(5);
     }
 }

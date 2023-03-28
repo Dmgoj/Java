@@ -137,6 +137,7 @@ public class Match
             if(athletesList[i] != null && athletesList[i].equals(athlete)) {
                 System.out.println(athletesList[i].getName() + " " + athletesList[i].getSurname() + " is removed.");
                 athletesList[i] = null;
+                break;
             }
         }
         
@@ -152,9 +153,12 @@ public class Match
     {
         
         for (i=0; i<athletesList.length; i++) {
-            if(athletesList[i]!=null && athletesList[i].getAthleteNumber() == athleteNumber) {athletesList[i] = null;}
+            if(athletesList[i]!=null && athletesList[i].getAthleteNumber() == athleteNumber) {
+				athletesList[i] = null;
+				return true;
+            }
         } 
-        return true;
+        return false;
     }
 
     /**
