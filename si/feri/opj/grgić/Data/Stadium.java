@@ -20,8 +20,9 @@ public class Stadium extends Venue {
 
 	@Override
 	public String toString() {
-		return "Stadium [capacity=" + capacity + "]";
+		return super.toString();
 	}
+	
 	
 	
 

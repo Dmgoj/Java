@@ -14,7 +14,7 @@ public abstract class Venue
     private String phoneNumber;
     private Match[] listOfMatches;
     private int numberOfMatches;
-    protected int capacity;
+    
     
 
     /**
@@ -46,11 +46,14 @@ public abstract class Venue
     	this.phoneNumber = phoneNumber;
     }
     
-    public Venue(int numberOfMatches)
+    public Venue(String name, String phoneNumber, int capacity)
     {
-    	this.listOfMatches = new Match[numberOfMatches];
-    	this.numberOfMatches = 0;
+    	
+    	this(name,phoneNumber);
+    	this.listOfMatches = new Match[capacity];
+    	
     }
+    
    
     /**
      * Adds a match to the venue
@@ -78,7 +81,7 @@ public abstract class Venue
      */
     public double getOccupancy()
     {
-    	return numberOfMatches/capacity*100;
+    	return numberOfMatches/listOfMatches.length*100;
     }
     
     public abstract int getCapacity();

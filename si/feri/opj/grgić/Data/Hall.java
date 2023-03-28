@@ -12,7 +12,7 @@ public class Hall extends Venue {
 	public Hall(int capacity)
 	{
 		this.capacity = capacity;
-		super.capacity = capacity;
+		
 	}	
 	
 	public void setNumberOfAdditionalHalls(int numberOfAdditionalHalls)
@@ -29,7 +29,7 @@ public class Hall extends Venue {
 
 	@Override
 	public String toString() {
-		return "Hall [capacity=" + capacity + ", numberOfAdditionalHalls=" + numberOfAdditionalHalls + "]";
+		return super.toString();
 	}
 	
 	
