@@ -1,20 +1,19 @@
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 public class Hall extends Venue {
-	private int capacity;
+	
 	private int numberOfAdditionalHalls;
 	
-	public Hall()
-	{
-		
+
+	
+	
+	public Hall(String name, String phoneNumber, int capacity, int halls) {
+		super(name, phoneNumber, capacity);
+		this.numberOfAdditionalHalls=halls;
 	}
-	
-	public Hall(int capacity)
-	{
-		this.capacity = capacity;
-		
-	}	
-	
+
+
+
 	public void setNumberOfAdditionalHalls(int numberOfAdditionalHalls)
 	{
 		this.numberOfAdditionalHalls = numberOfAdditionalHalls;
@@ -24,7 +23,7 @@ public class Hall extends Venue {
 
 	@Override
 	public int getCapacity() {
-		return capacity+ numberOfAdditionalHalls;
+		return super.listOfMatches.length + numberOfAdditionalHalls;
 	}
 
 	@Override

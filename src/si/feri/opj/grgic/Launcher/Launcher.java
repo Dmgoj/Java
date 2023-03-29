@@ -1,8 +1,8 @@
 // Adds Launcher class to the si.feri.opj.grgić.Launcher package
-package si.feri.opj.grgić.Launcher;
+package si.feri.opj.grgic.Launcher;
 
 // Imports si.feri.opj.grgić.Data package
-import si.feri.opj.grgić.Data.*;
+import si.feri.opj.grgic.Data.*;
 
 // Imports java.time and util package
 import java.time.*;
@@ -94,6 +94,6 @@ public class Launcher
         
         Match match1 = new Match();
        
-        Hall hall = new Hall();
+        //Hall hall = new Hall();
     }
 }

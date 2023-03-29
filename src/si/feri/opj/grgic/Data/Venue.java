@@ -1,26 +1,26 @@
 // Adds Venue class the package si.feri.opj.grgić.Data
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 import java.util.*;
 /**
  * The Venue class represents a venue.
  *
- * @author Domagoj Grgić
+ * @author Domagoj Grgic
  */
 public abstract class Venue
 {
     // Set attributes
     private String name;
     private String phoneNumber;
-    private Match[] listOfMatches;
+    protected Match[] listOfMatches;
     private int numberOfMatches;
-    
+    private Discipline discipline; 
     
 
     /**
      * Creates a new Venue object.
      */
-    public Venue()
+    private Venue()
     {
 
     }
@@ -29,7 +29,7 @@ public abstract class Venue
      * 
      * @param name - the name of the venue
      */
-    public Venue(String name)
+    private Venue(String name)
     {
         this.name = name;
     }
@@ -40,7 +40,7 @@ public abstract class Venue
      * @param name - the name of the venue
      * @param phoneNumber - phone number
      */
-    public Venue(String name, String phoneNumber)
+    private Venue(String name, String phoneNumber)
     {
     	this(name);
     	this.phoneNumber = phoneNumber;
@@ -81,15 +81,14 @@ public abstract class Venue
      */
     public double getOccupancy()
     {
-    	return numberOfMatches/listOfMatches.length*100;
+    	return numberOfMatches/getCapacity()*100;
     }
     
     public abstract int getCapacity();
 	@Override
 	public String toString() {
 		return "Venue [name=" + name + ", phoneNumber=" + phoneNumber + ", listOfMatches="
-				+ Arrays.toString(listOfMatches) + ", numberOfMatches=" + numberOfMatches + ", capacity=" + capacity
-				+ "]";
+				+ Arrays.toString(listOfMatches) + ", numberOfMatches=" + numberOfMatches + "]";
 	}
     
    

@@ -1,5 +1,5 @@
 // Adds Match class to the package si.feri.opj.grgić.Data
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 // Imports java.time and util package
 import java.time.*;
@@ -11,7 +11,7 @@ import java.util.*;
  * 
  * @author Domagoj Grgić
  */
-public class Match
+public class Match extends Event
 {
     // Declare attributes
     private String name;

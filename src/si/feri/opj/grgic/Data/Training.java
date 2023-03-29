@@ -1,5 +1,5 @@
 // Adds Training class the package si.feri.opj.grgić.Data
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 // Imports java.time packages
 import java.time.*;
@@ -10,7 +10,7 @@ import java.time.*;
  *
  * @author Domagoj Grgić
  */
-public class Training
+public class Training extends Event
 {
     // Sets attributes
     private String name;

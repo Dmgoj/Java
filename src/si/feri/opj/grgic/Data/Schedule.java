@@ -1,5 +1,5 @@
 // Adds Schedule class to the package si.feri.opj.grgić.Data
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 // Imports java.time package
 import java.time.*;

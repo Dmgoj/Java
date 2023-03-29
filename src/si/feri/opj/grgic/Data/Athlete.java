@@ -1,5 +1,4 @@
-// Adds Athlete class to the package si.feri.opj.grgić.Data
-package si.feri.opj.grgić.Data;
+package si.feri.opj.grgic.Data;
 
 // Imports java.time s
 import java.time.*;
@@ -17,6 +16,7 @@ public class Athlete
     private String surname;
     private int athleteNumber;
     private LocalDate dateOfBirth;
+    private Discipline discipline;
 
     /**
      * Default constructor that creates a new Athlete object

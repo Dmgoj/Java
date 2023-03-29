@@ -2,3 +2,4 @@ Assignment1/
 testignore.java
 *.class
 /.metadata/
+/bin/
