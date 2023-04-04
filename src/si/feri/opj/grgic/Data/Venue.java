@@ -81,7 +81,7 @@ public abstract class Venue
      */
     public double getOccupancy()
     {
-    	return numberOfMatches/getCapacity()*100;
+    	return (double)numberOfMatches/getCapacity()*100;
     }
     
     public abstract int getCapacity();

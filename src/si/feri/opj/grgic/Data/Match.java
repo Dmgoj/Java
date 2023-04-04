@@ -14,9 +14,9 @@ import java.util.*;
 public class Match extends Event
 {
     // Declare attributes
-    private String name;
+    /*private String name;
     private Schedule schedule;
-    private boolean cancelled = false;
+    private boolean cancelled = false;*/
     private Athlete[] athletesList = new Athlete[10];
     public int i;
 
@@ -34,10 +34,9 @@ public class Match extends Event
      * @param name - the name of the match
      * @param schedule - the schedule of the match
      */
-    public Match(String name, Schedule schedule)
+    public Match(String name, Schedule schedule, boolean cancelled)
     {
-        this.name = name; 
-        this.schedule = schedule;
+    	 super(name, schedule, cancelled);
     }
     
     /**
@@ -45,62 +44,64 @@ public class Match extends Event
      * 
      * @param name - the name of the match
      */
-    public void setName(String name)
+    /*public void setName(String name)
     {
         this.name = name; 
-    }
+    }*/
 
     /**
      * Gets the name of the match.
      * 
      * @return the name of the match
      */
-    public String getName()
+    /*public String getName()
     {
         return name;
-    }
+    }*/
 
     /**
      * Sets the schedule of the match.
      * 
      * @param schedule - the schedule of the match
      */
-    public void setSchedule (Schedule schedule)
+    /*public void setSchedule (Schedule schedule)
     {
         this.schedule = schedule;
-    }
+    }*/
 
     /**
      * Gets the schedule of the match.
      * 
      * @return the schedule of the match
      */
-    public Schedule getSchedule()
+    /*public Schedule getSchedule()
     {
         return schedule;
-    }
+    }*/
 
     /**
      * Sets the cancellation status of the match.
      * 
      * @param cancelled - the cancellation status of the match
      */
-    public void setCancelled(boolean cancelled)
+    /*public void setCancelled(boolean cancelled)
     {
         this.cancelled = cancelled;
-    }
+    }*/
 
     /**
      * Gets the cancellation status of the match.
      * 
      * @return the cancellation status of the match
      */
-    public boolean getCancelled()
+    /*public boolean getCancelled()
     {
         return cancelled;
-    }
+    }*/
 
-    /**
+    
+
+	/**
      * Checks if the athlete can compete in the match based on their age.
      * 
      * @param athlete - the athlete to check
@@ -185,7 +186,11 @@ public class Match extends Event
     @Override
     public String toString()
     {
-        return name + " " + schedule + " " + cancelled + " " + Arrays.toString(athletesList) + " ";
+    	String temp = ". List of athletes: ";
+    	for(int i=0; i<athletesList.length; i++) {
+    		if(athletesList[i]!= null)temp = temp + athletesList[i].getName()+ ", ";
+    	}
+    	return super.toString() + " " + temp;
     }
     
     

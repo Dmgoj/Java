@@ -60,7 +60,7 @@ public class Launcher
         
         
         // Creates a new Training object
-        Training training = new Training("Basketball");
+        Training training = new Training();
         
         // Sets the rest of the Training attributes
         training.setSchedule(new Schedule(LocalDateTime.of(2023, 2, 2, 10, 00)));
@@ -85,15 +85,20 @@ public class Launcher
         match.addAthleteToMatch(athlete8);
         match.addAthleteToMatch(athlete9); */
         
-        match.removeAthleteFromMatch(athlete1);
-        match.removeAthleteFromMatch(77);
+       // match.removeAthleteFromMatch(athlete1);
+       // match.removeAthleteFromMatch(77);
 
         System.out.println(match.athleteExists("Doncic"));
         
        
         
-        Match match1 = new Match();
        
+        System.out.println(match.toString());
+        
+        Hall hall = new Hall("Ledena", "+3861234567", 1, 1);
+        hall.addMatch(match);
+       System.out.println(hall.getOccupancy()+ " " + hall.getCapacity());
         //Hall hall = new Hall();
+        
     }
 }

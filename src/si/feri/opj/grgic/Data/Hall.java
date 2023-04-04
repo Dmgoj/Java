@@ -28,7 +28,7 @@ public class Hall extends Venue {
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return super.toString() + " " +numberOfAdditionalHalls;
 	}
 	
 	

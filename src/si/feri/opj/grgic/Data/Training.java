@@ -13,10 +13,10 @@ import java.time.*;
 public class Training extends Event
 {
     // Sets attributes
-    private String name;
+    /*private String name;
     private Schedule schedule;
+    private boolean cancelled = false;*/
     private String trainerName;
-    private boolean cancelled = false;
 
     /**
      * Default constructor that creates Training object.
@@ -31,9 +31,9 @@ public class Training extends Event
      *
      * @param name - the name of the training.
      */
-    public Training(String name)
+    public Training(String name, Schedule schedule, boolean cancelled)
     {
-        this.name = name;
+        super(name, schedule, cancelled);
     }
 
     /**
@@ -41,20 +41,20 @@ public class Training extends Event
      *
      * @param name - the name of the training.
      */
-    public void setName(String name)
+    /*public void setName(String name)
     {
         this.name = name; 
-    }
+    }*/
 
      /**
       * Gets the name of the training.
       *
       * @return The name of the training.
       */
-    public String getName()
+    /*public String getName()
     {
         return name;
-    }
+    }*/
 
    
      /**
@@ -62,20 +62,20 @@ public class Training extends Event
       *
       * @param schedule - the schedule of the training.
       */
-    public void setSchedule (Schedule schedule)
+    /*public void setSchedule (Schedule schedule)
     {
         this.schedule = schedule;
-    }
+    }*/
 
     /**
      * Gets the schedule of the training.
      *
      * @return The schedule of the training.
      */
-    public Schedule getSchedule()
+    /*public Schedule getSchedule()
     {
         return schedule;
-    }
+    }*/
 
     /**
      * Sets the name of the trainer leading the training.
@@ -97,24 +97,7 @@ public class Training extends Event
     }
 
     /**
-     * Sets whether the training has been cancelled.
-     *
-     * @param cancelled - has the training  been cancelled.
-     */
-    public void setCancelled(boolean cancelled)
-    {
-        this.cancelled = cancelled;
-    }
-
-    /**
-     * Returns whether the training has been cancelled.
-     *
-     * @return Whether the training has been cancelled.
-     */
-    public boolean getCancelled()
-    {
-        return cancelled;
-    }
+     
     
     /**
      * Overrides toString method
@@ -124,7 +107,7 @@ public class Training extends Event
     @Override
     public String toString()
     {
-    	return name + schedule + trainerName + cancelled;
+    	return super.toString() + " " + trainerName;
     }
     
 }
