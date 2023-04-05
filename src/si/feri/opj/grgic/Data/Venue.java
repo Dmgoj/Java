@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class Venue
 {
     // Set attributes
-    private String name;
+    protected String name;
     private String phoneNumber;
     protected Match[] listOfMatches;
     private int numberOfMatches;
@@ -61,10 +61,12 @@ public abstract class Venue
      */
     public void addMatch(Match match)
     {
+    	if(this instanceof Stadium && match.getSchedule().getDateTime().getHour()>20) { // throw exception }
     	if (numberOfMatches<listOfMatches.length) {
     		listOfMatches[numberOfMatches] = match;
     		numberOfMatches++;
     	}
+    	
     }
     
     /**

@@ -9,15 +9,15 @@ import java.util.*;
  * Match class represents a match with a name, schedule, athletes list and cancellation status.
  * Contain methods to add, remove, and check athletes that can compete in the match.
  * 
- * @author Domagoj Grgić
+ * @author Domagoj Grgic
  */
-public class Match extends Event
+public class Match extends Event implements Competition
 {
     // Declare attributes
     /*private String name;
     private Schedule schedule;
     private boolean cancelled = false;*/
-    private Athlete[] athletesList = new Athlete[10];
+    protected Athlete[] athletesList = new Athlete[10];
     public int i;
 
     /**
@@ -192,6 +192,18 @@ public class Match extends Event
     	}
     	return super.toString() + " " + temp;
     }
+
+	@Override
+	public void checkValidity(Venue venue) {
+		for (int i=0; i<venue.listOfMatches.length; i++) {
+			if(venue.listOfMatches[i] == venue.listOfMatches[i]) {
+				System.out.println("The match " + venue.name + " can take place");
+				break;
+			} else {
+				System.out.println("The match " + venue.name + " has not been added to the venue");
+			}
+		}
+	}
     
     
 

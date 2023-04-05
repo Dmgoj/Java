@@ -9,7 +9,7 @@ import java.time.*;
  * 
  * @author Domagoj Grgić
  */
-public class Athlete
+public class Athlete implements Competition
 {
     // Sets attributes
     private String name;
@@ -17,6 +17,7 @@ public class Athlete
     private int athleteNumber;
     private LocalDate dateOfBirth;
     private Discipline discipline;
+    private Match[] listOfPersonalMatches = new Match[5];
 
     /**
      * Default constructor that creates a new Athlete object
@@ -136,6 +137,8 @@ public class Athlete
         return dateOfBirth;
     }
     
+    
+    
     /**
      * Overrides toString method
      *
@@ -146,4 +149,11 @@ public class Athlete
     {
     	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " ";
     }
+
+	@Override
+	public void checkValidity(Venue venue) {
+		for (int i=0; i<venue.listOfMatches.length; i++) {
+			if(venue.listOfMatches[i].athleteExists(surname) && venue.listOfMatches[i] == null) { listOfPersonalMatches[i] = venue.listOfMatches[i]; }
+		}
+	}
 }

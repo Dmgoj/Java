@@ -10,7 +10,7 @@ import java.time.format.*;
  * The Schedule class represents a schedule for match or training.
  * It provides methods to set and get the dates of the events above.
  *
- * @author Domagoj Grgić
+ * @author Domagoj Grgic
  */
 public class Schedule
 {
