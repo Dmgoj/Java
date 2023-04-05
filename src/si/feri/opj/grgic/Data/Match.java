@@ -194,11 +194,12 @@ public class Match extends Event implements Competition
     }
 
 	@Override
+	// prints multiple time set boolean value so it prints only once
 	public void checkValidity(Venue venue) {
 		for (int i=0; i<venue.listOfMatches.length; i++) {
 			if(venue.listOfMatches[i] == venue.listOfMatches[i]) {
 				System.out.println("The match " + venue.name + " can take place");
-				break;
+				
 			} else {
 				System.out.println("The match " + venue.name + " has not been added to the venue");
 			}
