@@ -24,7 +24,7 @@ public class Launcher
     public static void main(String[] args)
     {
         // Creates new Match schedule
-        Schedule matchSchedule = new Schedule(LocalDateTime.of(2023,3,30,14,00));
+        Schedule matchSchedule = new Schedule(LocalDateTime.of(2023,3,30,21,00));
         
         // Create a new Match object using default constructor
         Match match = new Match();
@@ -95,8 +95,15 @@ public class Launcher
        
         System.out.println(match.toString());
         
+        Stadium noviStadion = new Stadium("Bla", "+3861234567", 2);
+        
         Hall hall = new Hall("Ledena", "+3861234567", 1, 1);
-        hall.addMatch(match);
+        try {
+			noviStadion.addMatch(match);
+		} catch (LateMatchException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
        System.out.println(hall.getOccupancy()+ " " + hall.getCapacity());
         //Hall hall = new Hall();
         
