@@ -152,8 +152,12 @@ public class Athlete implements Competition
 
 	@Override
 	public void checkValidity(Venue venue) {
+		// check if match is already in list of personal matches method or boolean way
+		
 		for (int i=0; i<venue.listOfMatches.length; i++) {
-			if(venue.listOfMatches[i].athleteExists(surname) && venue.listOfMatches[i] == null) { listOfPersonalMatches[i] = venue.listOfMatches[i]; }
+			if(venue.listOfMatches[i].athleteExists(surname) && venue.listOfMatches[i] == null) { listOfPersonalMatches[i] = venue.listOfMatches[i];
+			break;
+			}
 		}
 	}
 }

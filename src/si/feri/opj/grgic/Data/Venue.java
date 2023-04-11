@@ -60,10 +60,10 @@ public abstract class Venue
      * @param match
      * @throws Exception 
      */
-    public void addMatch(Match match)throws LateMatchException 
+    public void addMatch(Match match)throws AddingMatchException 
     {
     	if(this instanceof Stadium && match.getSchedule().getDateTime().getHour()>20) { 
-    			throw new LateMatchException("Cannot add match after 8 PM.");
+    			throw new AddingMatchException("Cannot add match after 8 PM.");
     		}
     	
     		if (numberOfMatches<listOfMatches.length) {
@@ -98,6 +98,7 @@ public abstract class Venue
 				+ Arrays.toString(listOfMatches) + ", numberOfMatches=" + numberOfMatches + "]";
 	}
     
+	
    
 
 

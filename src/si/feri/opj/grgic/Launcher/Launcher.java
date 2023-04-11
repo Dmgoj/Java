@@ -74,8 +74,18 @@ public class Launcher
         System.out.println(match.canCompete(athlete));
         System.out.println (match.canCompete(athlete) ? athlete.getName() + " " + athlete.getSurname() + " can compete." : athlete.getName() + " " + athlete.getSurname() + " can not compete!");
 
-        match.addAthleteToMatch(athlete);
-        match.addAthleteToMatch(athlete1);
+        try {
+			match.addAthleteToMatch(athlete);
+		} catch (AddingAthleteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			match.addAthleteToMatch(athlete1);
+		} catch (AddingAthleteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         /* match.addAthleteToMatch(athlete2);
         match.addAthleteToMatch(athlete3);
         match.addAthleteToMatch(athlete4);
@@ -100,7 +110,7 @@ public class Launcher
         Hall hall = new Hall("Ledena", "+3861234567", 1, 1);
         try {
 			noviStadion.addMatch(match);
-		} catch (LateMatchException e) {
+		} catch (AddingMatchException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
