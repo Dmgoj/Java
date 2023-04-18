@@ -12,10 +12,11 @@ public class Hall extends Venue {
 		this.numberOfAdditionalHalls=halls;
 	}
 
-
+	
 
 	public void setNumberOfAdditionalHalls(int numberOfAdditionalHalls)
 	{
+		if (numberOfAdditionalHalls < 1) { throw new IllegalArgumentException(); } 
 		this.numberOfAdditionalHalls = numberOfAdditionalHalls;
 	}
 	

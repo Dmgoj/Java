@@ -148,6 +148,7 @@ public class Match extends Event implements Competition {
 	 */
 	public boolean removeAthleteFromMatch(int athleteNumber) {
 
+		if (athleteNumber < 1) { throw new IllegalArgumentException(); }
 		for (i = 0; i < athletesList.length; i++) {
 			if (athletesList[i] != null && athletesList[i].getAthleteNumber() == athleteNumber) {
 				athletesList[i] = null;

@@ -1,12 +1,20 @@
 // Adds Launcher class to the si.feri.opj.grgić.Launcher package
 package si.feri.opj.grgic.Launcher;
 
-// Imports si.feri.opj.grgić.Data package
-import si.feri.opj.grgic.Data.*;
-
 // Imports java.time and util package
-import java.time.*;
-import java.util.*;
+import java.time.LocalDateTime;
+
+// Imports si.feri.opj.grgić.Data package
+import si.feri.opj.grgic.Data.AddingAthleteException;
+import si.feri.opj.grgic.Data.AddingMatchException;
+import si.feri.opj.grgic.Data.Athlete;
+import si.feri.opj.grgic.Data.Discipline;
+import si.feri.opj.grgic.Data.Hall;
+import si.feri.opj.grgic.Data.Match;
+import si.feri.opj.grgic.Data.Schedule;
+import si.feri.opj.grgic.Data.SportDisciplineException;
+import si.feri.opj.grgic.Data.Stadium;
+import si.feri.opj.grgic.Data.Training;
 
 /**
  * Class Launcher contains main method which is responsible for creating new Athlete, Match, Training and Schedule objects,
@@ -24,7 +32,7 @@ public class Launcher
     public static void main(String[] args)
     {
         // Creates new Match schedule
-        Schedule matchSchedule = new Schedule(LocalDateTime.of(2023,3,30,21,00));
+        Schedule matchSchedule = new Schedule(LocalDateTime.of(2023,3,30,18,00));
         
         // Create a new Match object using default constructor
         Match match = new Match();
@@ -37,10 +45,11 @@ public class Launcher
         
         // Creates a new Athlete object
         Athlete athlete = new Athlete("Luka", "Doncic");
+        athlete.setDiscipline(Discipline.VOLLEYBALL);
         
         // Set the rest of the Athlete object attributes
         athlete.setAthleteNumber(77);
-        athlete.setDateOfBirth(1999,2,28);
+        athlete.setDateOfBirth(2005,2,28);
         
         // Prints all the attributes in athlete
         System.out.println("ATHLETE: " + athlete);
@@ -48,7 +57,8 @@ public class Launcher
         // Creates another Athlete object
         Athlete athlete1 = new Athlete("Robert", "Prosinečki");
         athlete1.setAthleteNumber(8);
-        athlete1.setDateOfBirth(1969,1,12);
+        athlete1.setDateOfBirth(2009,1,12);
+        athlete1.setDiscipline(Discipline.VOLLEYBALL);
         /* Athlete athlete2 = new Athlete("pero", "zderic");
         Athlete athlete3 = new Athlete("roki", "balboa");
         Athlete athlete4 = new Athlete("stojane", "dnevnik");
@@ -108,14 +118,20 @@ public class Launcher
         Stadium noviStadion = new Stadium("Bla", "+3861234567", 2);
         
         Hall hall = new Hall("Ledena", "+3861234567", 1, 1);
+        hall.setDiscipline(Discipline.VOLLEYBALL);
+        System.out.println(hall);
         try {
-			noviStadion.addMatch(match);
-		} catch (AddingMatchException e) {
+			hall.addMatch(match);
+		} catch (AddingMatchException|SportDisciplineException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
        System.out.println(hall.getOccupancy()+ " " + hall.getCapacity());
         //Hall hall = new Hall();
-        
+       
+      //hall.setNumberOfAdditionalHalls(0);
+      
+      
+         
     }
 }

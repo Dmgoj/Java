@@ -16,8 +16,16 @@ public class Athlete implements Competition
     private String surname;
     private int athleteNumber;
     private LocalDate dateOfBirth;
-    private Discipline discipline;
-    private Match[] listOfPersonalMatches = new Match[5];
+    Discipline discipline;
+    public Discipline getDiscipline() {
+		return discipline;
+	}
+
+	public void setDiscipline(Discipline discipline) {
+		this.discipline = discipline;
+	}
+
+	private Match[] listOfPersonalMatches = new Match[5];
 
     /**
      * Default constructor that creates a new Athlete object
