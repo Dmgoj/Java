@@ -43,6 +43,12 @@ import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import java.awt.CardLayout;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JMenu;
+import com.toedter.components.JSpinField;
+import javax.swing.JSpinner;
+import javax.swing.SpringLayout;
 
 public class GUI {
 
@@ -96,12 +102,12 @@ public class GUI {
 		JPanel Venue = new JPanel();
 		Venue.setToolTipText("Venue");
 		tabbedPane.addTab("Venue", null, Venue, null);
-		Venue.setLayout(new GridLayout(0, 3, 0, 0));
+		Venue.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Create Venue", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		Venue.add(panel_2);
-		panel_2.setLayout(new GridLayout(5, 2, 0, 0));
+		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panel_6 = new JPanel();
 		panel_2.add(panel_6);
@@ -143,14 +149,51 @@ public class GUI {
 		panel_5.add(venueCapacity);
 		venueCapacity.setColumns(10);
 		
+		JPanel panel_22 = new JPanel();
+		panel_6.add(panel_22);
+		panel_22.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JComboBox venueDiscipline = new JComboBox();
+		venueDiscipline.setModel(new DefaultComboBoxModel(Discipline.values()));
+		venueDiscipline.setToolTipText("Discipline");
+		panel_22.add(venueDiscipline);
+		
+		JPanel panel_20 = new JPanel();
+		panel_6.add(panel_20);
+		panel_20.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JRadioButton addHall = new JRadioButton("Hall");
+		buttonGroup_1.add(addHall);
+		panel_20.add(addHall);
+		
+		JRadioButton addStadium = new JRadioButton("Stadium");
+		buttonGroup_1.add(addStadium);
+		panel_20.add(addStadium);
+		
+		JPanel panel_21 = new JPanel();
+		panel_6.add(panel_21);
+		panel_21.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lblNewLabel_7 = new JLabel("Additional Halls");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_21.add(lblNewLabel_7);
+		
+		JSpinner spinner = new JSpinner();
+		panel_21.add(spinner);
+		
 		JButton venueSubmit = new JButton("Submit");
 		panel_6.add(venueSubmit);
 		
-		JList list = new JList();
-		list.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		panel_2.add(list);
+		JList venueListHall = new JList();
+		venueListHall.setBorder(new TitledBorder(null, "Halls", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.add(venueListHall);
+		
+		JList venueListStadium = new JList();
+		venueListStadium.setBorder(new TitledBorder(null, "Stadium", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.add(venueListStadium);
 		
 		JPanel panel_19 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_19.getLayout();
 		panel_2.add(panel_19);
 		
 		JButton editVenue = new JButton("Edit");
@@ -164,20 +207,22 @@ public class GUI {
 			}
 		});
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Athletes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		Venue.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		
-		JList list_1 = new JList();
-		panel.add(list_1);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Matches", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		Venue.add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JList list_2 = new JList();
-		panel_1.add(list_2);
+		JList venueMatchesList = new JList();
+		panel_1.add(venueMatchesList);
+		
+		JPanel panel_23 = new JPanel();
+		panel_1.add(panel_23);
+		
+		JButton venuaAddMatch = new JButton("Add");
+		panel_23.add(venuaAddMatch);
+		
+		JButton venueDeleteMatch = new JButton("Delete");
+		panel_23.add(venueDeleteMatch);
 		
 		JPanel Event = new JPanel();
 		tabbedPane.addTab("Event", null, Event, null);
@@ -186,11 +231,11 @@ public class GUI {
 		JPanel panel_12 = new JPanel();
 		panel_12.setBorder(new TitledBorder(null, "Create Event", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		Event.add(panel_12);
-		panel_12.setLayout(new GridLayout(4, 1, 0, 0));
+		panel_12.setLayout(new GridLayout(3, 1, 0, 0));
 		
 		JPanel panel_13 = new JPanel();
 		panel_12.add(panel_13);
-		panel_13.setLayout(new GridLayout(4, 1, 0, 0));
+		panel_13.setLayout(new GridLayout(5, 1, 0, 0));
 		
 		JPanel panel_7 = new JPanel();
 		panel_13.add(panel_7);
@@ -229,17 +274,27 @@ public class GUI {
 		panel_9.add(eventHappening);
 		buttonGroup.add(eventHappening);
 		
+		JComboBox venueType = new JComboBox();
+		venueType.setModel(new DefaultComboBoxModel(new String[] {"training", "match"}));
+		venueType.setToolTipText("Type");
+		panel_13.add(venueType);
+		
 		JButton eventSubmit = new JButton("Submit");
 		panel_13.add(eventSubmit);
 		
-		JList list_5 = new JList();
-		list_5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		panel_12.add(list_5);
+		JList eventTrainingList = new JList();
+		eventTrainingList.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Trainings", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_12.add(eventTrainingList);
 		
 		JPanel panel_16 = new JPanel();
 		panel_12.add(panel_16);
 		
 		JButton editEvent = new JButton("Edit");
+		editEvent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel_16.add(editEvent);
 		
 		JButton deleteEvent = new JButton("Delete");
@@ -252,28 +307,62 @@ public class GUI {
 		JPanel panel_10 = new JPanel();
 		panel_15.add(panel_10, "name_649886216918500");
 		panel_10.setBorder(new TitledBorder(null, "Athletes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_10.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JList list_3 = new JList();
-		panel_10.add(list_3);
+		JList eventAthleteList = new JList();
+		panel_10.add(eventAthleteList);
+		
+		JPanel panel = new JPanel();
+		panel_10.add(panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton eventAddAthlete = new JButton("Add");
+		panel.add(eventAddAthlete);
+		
+		JButton eventDeleteAthlete = new JButton("Delete");
+		panel.add(eventDeleteAthlete);
+		
+		JButton changePanelMatches = new JButton("Matches");
+				panel.add(changePanelMatches);
 		
 		JPanel panel_11 = new JPanel();
 		panel_15.add(panel_11, "name_649886230519700");
 		panel_11.setBorder(new TitledBorder(null, "Matches", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_11.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JList list_4 = new JList();
-		panel_11.add(list_4);
+		JList eventMatchesList = new JList();
+		panel_11.add(eventMatchesList);
+		
+		JPanel panel_24 = new JPanel();
+		panel_11.add(panel_24);
+		
+		JButton eventAddMatch = new JButton("Add");
+		panel_24.add(eventAddMatch);
+		
+		JButton eventDeleteMatch = new JButton("Delete");
+		panel_24.add(eventDeleteMatch);
+		
+		JButton changePanelAthletes = new JButton("Athletes");
+		panel_24.add(changePanelAthletes);
+		changePanelAthletes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_11.hide();
+				panel_10.show();
+			}
+		});
 		
 		JPanel Athlete = new JPanel();
 		Athlete.setBorder(new TitledBorder(null, "Add Athlete", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		Athlete.setToolTipText("Athlete");
 		tabbedPane.addTab("Athlete", null, Athlete, null);
-		Athlete.setLayout(new GridLayout(6, 2, 0, 0));
+		Athlete.setLayout(new GridLayout(2, 2, 0, 0));
 		
 		JPanel panel_14 = new JPanel();
 		Athlete.add(panel_14);
 		panel_14.setLayout(new GridLayout(6, 2, 0, 0));
 		
 		JLabel firstnamelabel = new JLabel("Firstname");
+		firstnamelabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(firstnamelabel);
 		
 		textField = new JTextField();
@@ -281,6 +370,7 @@ public class GUI {
 		panel_14.add(textField);
 		
 		JLabel surnamelabel = new JLabel("Surname");
+		surnamelabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(surnamelabel);
 		
 		textField_1 = new JTextField();
@@ -288,6 +378,7 @@ public class GUI {
 		panel_14.add(textField_1);
 		
 		JLabel lblNewLabel_6 = new JLabel("Athlete number");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(lblNewLabel_6);
 		
 		textField_2 = new JTextField();
@@ -295,6 +386,7 @@ public class GUI {
 		panel_14.add(textField_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Discipline");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(lblNewLabel_4);
 		
 		JComboBox discipline = new JComboBox();
@@ -303,6 +395,7 @@ public class GUI {
 		panel_14.add(discipline);
 		
 		JLabel lblNewLabel_5 = new JLabel("Date of birth");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(lblNewLabel_5);
 		
 		JDateChooser athleteDob = new JDateChooser();
@@ -316,8 +409,8 @@ public class GUI {
 		Athlete.add(panel_17);
 		panel_17.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JList list_6 = new JList();
-		panel_17.add(list_6);
+		JList athleteList = new JList();
+		panel_17.add(athleteList);
 		
 		JPanel panel_18 = new JPanel();
 		panel_17.add(panel_18);
@@ -327,5 +420,23 @@ public class GUI {
 		
 		JButton deleteAthlete = new JButton("Delete");
 		panel_18.add(deleteAthlete);
+		
+		changePanelMatches.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_10.hide();
+				panel_11.show();
+			}
+		});
+
 	}
+	
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	
 }
