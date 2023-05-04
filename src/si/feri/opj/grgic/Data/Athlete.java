@@ -155,7 +155,7 @@ public class Athlete implements Competition
     @Override
     public String toString()
     {
-    	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " ";
+    	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " " + discipline;
     }
 
 	@Override

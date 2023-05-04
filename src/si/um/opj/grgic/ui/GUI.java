@@ -1,4 +1,6 @@
 package si.um.opj.grgic.ui;
+import si.feri.opj.grgic.Data.*;
+import java.util.*;
 
 import java.awt.EventQueue;
 
@@ -19,11 +21,15 @@ import javax.swing.JList;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JInternalFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
@@ -49,6 +55,8 @@ import javax.swing.JMenu;
 import com.toedter.components.JSpinField;
 import javax.swing.JSpinner;
 import javax.swing.SpringLayout;
+import javax.swing.JCheckBox;
+import com.toedter.components.JLocaleChooser;
 
 public class GUI {
 
@@ -60,9 +68,9 @@ public class GUI {
 	private JTextField eventSchedule;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField athleteFirstname;
+	private JTextField athleteSurname;
+	private JTextField athleteNumber;
 
 	/**
 	 * Launch the application.
@@ -178,19 +186,19 @@ public class GUI {
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_21.add(lblNewLabel_7);
 		
-		JSpinner spinner = new JSpinner();
-		panel_21.add(spinner);
+		JSpinner additionalHalls = new JSpinner();
+		panel_21.add(additionalHalls);
 		
 		JButton venueSubmit = new JButton("Submit");
 		panel_6.add(venueSubmit);
 		
-		JList venueListHall = new JList();
-		venueListHall.setBorder(new TitledBorder(null, "Halls", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.add(venueListHall);
+		JList venueHallList = new JList();
+		venueHallList.setBorder(new TitledBorder(null, "Halls", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.add(venueHallList);
 		
-		JList venueListStadium = new JList();
-		venueListStadium.setBorder(new TitledBorder(null, "Stadium", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.add(venueListStadium);
+		JList venueStadiumList = new JList();
+		venueStadiumList.setBorder(new TitledBorder(null, "Stadium", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.add(venueStadiumList);
 		
 		JPanel panel_19 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_19.getLayout();
@@ -201,9 +209,39 @@ public class GUI {
 		
 		JButton deleteVenue = new JButton("Delete");
 		panel_19.add(deleteVenue);
+		
+		// VENUE 
+		
+		ArrayList<Hall> hallList = new ArrayList<>();
+		ArrayList<Stadium> stadiumList = new ArrayList<>();
+		
+		DefaultListModel<Hall> hallListModel = new DefaultListModel<>();
+		DefaultListModel<Stadium> stadiumListModel = new DefaultListModel<>();
+//		venueHallList
+//		venueStadiumList
+		
 		venueSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(venueName.getText());
+				
+				
+				if(addHall.isSelected()) {
+					Hall hall = new Hall(venueName.getText(), venuePhone.getText(), Integer.parseInt(venueCapacity.getText()));
+					hall.setDiscipline((Discipline)venueDiscipline.getSelectedItem());
+					hallList.add(hall);
+					venueHallList.setModel(hallListModel);
+					
+					for (Hall hala : hallList) {
+						hallListModel.addElement(hala);
+					}
+				} else if (addStadium.isSelected()){
+					Stadium stadium = new Stadium(venueName.getText(), venuePhone.getText(), Integer.parseInt(venueCapacity.getText()));
+					stadium.setDiscipline((Discipline)venueDiscipline.getSelectedItem());
+					stadiumList.add(stadium);
+					venueStadiumList.setModel(stadiumListModel);
+					for (Stadium stadion : stadiumList) {
+						stadiumListModel.addElement(stadion);
+					}
+				}
 			}
 		});
 		
@@ -266,25 +304,59 @@ public class GUI {
 		panel_13.add(panel_9);
 		panel_9.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JRadioButton eventCancelled = new JRadioButton("Cancelled");
+		JCheckBox eventCancelled = new JCheckBox("Cancel");
 		panel_9.add(eventCancelled);
-		buttonGroup.add(eventCancelled);
 		
-		JRadioButton eventHappening = new JRadioButton("Happening");
-		panel_9.add(eventHappening);
-		buttonGroup.add(eventHappening);
+		JComboBox typeOfEvent = new JComboBox();
+		typeOfEvent.setModel(new DefaultComboBoxModel(new String[] {"training", "match"}));
+		typeOfEvent.setToolTipText("Type");
+		panel_13.add(typeOfEvent);
 		
-		JComboBox venueType = new JComboBox();
-		venueType.setModel(new DefaultComboBoxModel(new String[] {"training", "match"}));
-		venueType.setToolTipText("Type");
-		panel_13.add(venueType);
+		JPanel panel_15 = new JPanel();
+		Event.add(panel_15);
+		panel_15.setLayout(new CardLayout(0, 0));
 		
-		JButton eventSubmit = new JButton("Submit");
-		panel_13.add(eventSubmit);
+		JPanel panel_11 = new JPanel();
+		panel_15.add(panel_11, "name_649886230519700");
+		panel_11.setBorder(new TitledBorder(null, "Matches", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_11.setLayout(new GridLayout(0, 1, 0, 0));
 		
+		// EVENT
+		
+		ArrayList<Training> trainingList = new ArrayList<>();
+		ArrayList<Match> matchList = new ArrayList<>();
+		DefaultListModel<Training> trainingListModel = new DefaultListModel<Training>();
+		DefaultListModel<Match> matchListModel = new DefaultListModel<Match>();
+
 		JList eventTrainingList = new JList();
 		eventTrainingList.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Trainings", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_12.add(eventTrainingList);
+		
+		JList eventMatchesList = new JList();
+		panel_11.add(eventMatchesList);
+		
+		//String eventType;
+		JButton eventSubmit = new JButton("Submit");
+		eventSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			 String eventType = (String)typeOfEvent.getSelectedItem();
+			 boolean isCancelled = eventCancelled.isSelected();
+			 if(eventType.equals("training")) { 
+				 Training training = new Training(eventName.getText(), new Schedule(LocalDateTime.parse(eventSchedule.getText())), isCancelled);
+				 trainingList.add(training);
+				 eventTrainingList.setModel(trainingListModel);
+				 trainingListModel.addElement(training);
+			} else {
+				Match match = new Match(eventName.getText(), new Schedule(LocalDateTime.parse(eventSchedule.getText())), isCancelled);
+				matchList.add(match);
+				eventMatchesList.setModel(matchListModel);
+				matchListModel.addElement(match);
+				}
+			}
+		});
+		panel_13.add(eventSubmit);
+		
+		
 		
 		JPanel panel_16 = new JPanel();
 		panel_12.add(panel_16);
@@ -300,9 +372,7 @@ public class GUI {
 		JButton deleteEvent = new JButton("Delete");
 		panel_16.add(deleteEvent);
 		
-		JPanel panel_15 = new JPanel();
-		Event.add(panel_15);
-		panel_15.setLayout(new CardLayout(0, 0));
+		
 		
 		JPanel panel_10 = new JPanel();
 		panel_15.add(panel_10, "name_649886216918500");
@@ -325,13 +395,9 @@ public class GUI {
 		JButton changePanelMatches = new JButton("Matches");
 				panel.add(changePanelMatches);
 		
-		JPanel panel_11 = new JPanel();
-		panel_15.add(panel_11, "name_649886230519700");
-		panel_11.setBorder(new TitledBorder(null, "Matches", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_11.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JList eventMatchesList = new JList();
-		panel_11.add(eventMatchesList);
+		
+		
 		
 		JPanel panel_24 = new JPanel();
 		panel_11.add(panel_24);
@@ -365,25 +431,25 @@ public class GUI {
 		firstnamelabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(firstnamelabel);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		panel_14.add(textField);
+		athleteFirstname = new JTextField();
+		athleteFirstname.setColumns(10);
+		panel_14.add(athleteFirstname);
 		
 		JLabel surnamelabel = new JLabel("Surname");
 		surnamelabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(surnamelabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		panel_14.add(textField_1);
+		athleteSurname = new JTextField();
+		athleteSurname.setColumns(10);
+		panel_14.add(athleteSurname);
 		
 		JLabel lblNewLabel_6 = new JLabel("Athlete number");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_14.add(lblNewLabel_6);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		panel_14.add(textField_2);
+		athleteNumber = new JTextField();
+		athleteNumber.setColumns(10);
+		panel_14.add(athleteNumber);
 		
 		JLabel lblNewLabel_4 = new JLabel("Discipline");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -402,15 +468,38 @@ public class GUI {
 		athleteDob.setDateFormatString("yyyy. MM. dd.");
 		panel_14.add(athleteDob);
 		
-		JButton athleteSubmit = new JButton("Submit");
-		panel_14.add(athleteSubmit);
+		// ATHLETE
 		
 		JPanel panel_17 = new JPanel();
 		Athlete.add(panel_17);
 		panel_17.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JList athleteList = new JList();
+		athleteList.setBorder(new TitledBorder(null, "Athletes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_17.add(athleteList);
+		
+		ArrayList<Athlete> listOfAthletes = new ArrayList<Athlete>();
+		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
+		
+		JButton athleteSubmit = new JButton("Submit");
+		athleteSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LocalDate dob = athleteDob.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				Athlete athlete = new Athlete(athleteFirstname.getText(), athleteSurname.getText(),Integer.parseInt(athleteNumber.getText()), dob);
+				athlete.setDiscipline((Discipline)discipline.getSelectedItem());
+	
+	// WHy are we adding athlete to ArrayList?			
+				listOfAthletes.add(athlete);
+				athleteList.setModel(athleteListModel);
+				athleteListModel.addElement(athlete);
+				
+				System.out.println(athlete);
+				
+			}
+		});
+		panel_14.add(athleteSubmit);
+		
+		
 		
 		JPanel panel_18 = new JPanel();
 		panel_17.add(panel_18);

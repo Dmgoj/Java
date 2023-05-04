@@ -7,9 +7,9 @@ public class Hall extends Venue {
 
 	
 	
-	public Hall(String name, String phoneNumber, int capacity, int halls) {
+	public Hall(String name, String phoneNumber, int capacity) {
 		super(name, phoneNumber, capacity);
-		this.numberOfAdditionalHalls=halls;
+		//this.numberOfAdditionalHalls=halls;
 	}
 
 	

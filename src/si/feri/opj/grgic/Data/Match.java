@@ -185,7 +185,7 @@ public class Match extends Event implements Competition {
 	 */
 	@Override
 	public String toString() {
-		String temp = ". List of athletes: ";
+		String temp = ". Click on \"Athletes\" to see the list of athletes: ";
 		for (int i = 0; i < athletesList.length; i++) {
 			if (athletesList[i] != null)
 				temp = temp + athletesList[i].getName() + ", ";

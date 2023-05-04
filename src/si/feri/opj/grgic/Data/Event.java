@@ -63,7 +63,8 @@ public class Event {
     @Override
     public String toString()
     {
-    	return name + schedule + cancelled;
+    	String isCancelled = cancelled ? " is cancelled" : " is happening";
+    	return name + " event is scheduled on " + schedule +" " + isCancelled;
     }
 
 }
