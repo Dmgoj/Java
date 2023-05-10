@@ -27,6 +27,7 @@ import java.time.ZoneId;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -43,7 +44,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 import java.awt.Component;
-import si.feri.opj.grgic.Data.Discipline;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
@@ -223,24 +224,31 @@ public class GUI {
 		venueSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				// Checks if Hall or Stadium is selected and fills JList Hall or Stadium
 				if(addHall.isSelected()) {
+					 
 					Hall hall = new Hall(venueName.getText(), venuePhone.getText(), Integer.parseInt(venueCapacity.getText()));
 					hall.setDiscipline((Discipline)venueDiscipline.getSelectedItem());
+					int addHalls = (int)additionalHalls.getValue();
+					if (addHalls != 0) { hall.setNumberOfAdditionalHalls(addHalls);}
 					hallList.add(hall);
-					venueHallList.setModel(hallListModel);
+					hallListModel.clear();
 					
 					for (Hall hala : hallList) {
 						hallListModel.addElement(hala);
 					}
+					venueHallList.setModel(hallListModel);
+					
 				} else if (addStadium.isSelected()){
 					Stadium stadium = new Stadium(venueName.getText(), venuePhone.getText(), Integer.parseInt(venueCapacity.getText()));
 					stadium.setDiscipline((Discipline)venueDiscipline.getSelectedItem());
 					stadiumList.add(stadium);
-					venueStadiumList.setModel(stadiumListModel);
+					stadiumListModel.clear();
+					
 					for (Stadium stadion : stadiumList) {
 						stadiumListModel.addElement(stadion);
 					}
+					venueStadiumList.setModel(stadiumListModel);
 				}
 			}
 		});
@@ -256,8 +264,37 @@ public class GUI {
 		JPanel panel_23 = new JPanel();
 		panel_1.add(panel_23);
 		
-		JButton venuaAddMatch = new JButton("Add");
-		panel_23.add(venuaAddMatch);
+		JLabel warningLabel = new JLabel(); // VENUE WARNING LABEL
+		panel_23.add(warningLabel);
+		
+		DefaultListModel<Match> venueMatchModel = new DefaultListModel<Match>();
+		// adding match to venue hall or stadium match list
+		
+		JButton venueAddMatch = new JButton("Add");
+		venueAddMatch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hall selectedHall = (Hall) venueHallList.getSelectedValue();
+				Stadium selectedStadium = (Stadium) venueStadiumList.getSelectedValue();
+				Match selectedMatch = (Match) venueMatchesList.getSelectedValue();
+				if (selectedMatch == null && (selectedHall == null ||selectedStadium == null)) {
+				    //JOptionPane.showMessageDialog(null, "Please select a venue and match.", "OOPS!", JOptionPane.WARNING_MESSAGE);
+					warningLabel.setForeground(Color.RED);
+				    warningLabel.setText("Select both, venue and match!");
+				} else {
+					try {
+				    if(selectedHall != null) {selectedHall.addMatch(selectedMatch);}
+				    if (selectedStadium != null) {selectedStadium.addMatch(selectedMatch);}
+				    
+					} catch (AddingMatchException | SportDisciplineException ex) {
+					    warningLabel.setForeground(Color.RED);
+					    warningLabel.setText(ex.getMessage());
+					}
+				} 
+				System.out.println(selectedHall);
+				//System.out.println(selectedHall.getListOfMatches());
+				}
+		});
+		panel_23.add(venueAddMatch);
 		
 		JButton venueDeleteMatch = new JButton("Delete");
 		panel_23.add(venueDeleteMatch);
@@ -325,9 +362,10 @@ public class GUI {
 		
 		ArrayList<Training> trainingList = new ArrayList<>();
 		ArrayList<Match> matchList = new ArrayList<>();
+		ArrayList<Athlete> athleteArrayList = new ArrayList<>();
 		DefaultListModel<Training> trainingListModel = new DefaultListModel<Training>();
 		DefaultListModel<Match> matchListModel = new DefaultListModel<Match>();
-
+		DefaultListModel<Athlete> athleteEventListModel = new DefaultListModel<Athlete>();
 		JList eventTrainingList = new JList();
 		eventTrainingList.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Trainings", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_12.add(eventTrainingList);
@@ -349,8 +387,10 @@ public class GUI {
 			} else {
 				Match match = new Match(eventName.getText(), new Schedule(LocalDateTime.parse(eventSchedule.getText())), isCancelled);
 				matchList.add(match);
-				eventMatchesList.setModel(matchListModel);
+				eventMatchesList.setModel(matchListModel); // add match to event match list
+				venueMatchesList.setModel(venueMatchModel); 
 				matchListModel.addElement(match);
+				venueMatchModel.addElement(match); // add matches to venue match list
 				}
 			}
 		});
@@ -387,6 +427,30 @@ public class GUI {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton eventAddAthlete = new JButton("Add");
+		eventAddAthlete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Athlete selectedAthlete = (Athlete) eventAthleteList.getSelectedValue();
+				Match selectedMatch = (Match) eventMatchesList.getSelectedValue();
+				
+				
+				if(selectedAthlete == null || selectedMatch == null) {
+					JLabel eventWarningLabel= new JLabel();
+					panel.add(eventWarningLabel);
+					eventWarningLabel.setForeground(Color.RED);
+					eventWarningLabel.setText("Select match and athlete!");
+				} else {
+					try {
+						selectedMatch.addAthleteToMatch(selectedAthlete);
+						athleteArrayList.add(selectedAthlete);
+						
+						
+					} catch (AddingAthleteException exc) {
+						JOptionPane.showMessageDialog(null, exc, "FORGOT TO SELECT?", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+				
+			}
+		});
 		panel.add(eventAddAthlete);
 		
 		JButton eventDeleteAthlete = new JButton("Delete");
@@ -487,12 +551,24 @@ public class GUI {
 				LocalDate dob = athleteDob.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				Athlete athlete = new Athlete(athleteFirstname.getText(), athleteSurname.getText(),Integer.parseInt(athleteNumber.getText()), dob);
 				athlete.setDiscipline((Discipline)discipline.getSelectedItem());
+				
+				// eventAthleteList.setModel(athleteEventListModel);
+				// athleteEventListModel.addElement(athleteArrayList);
 	
 	// WHy are we adding athlete to ArrayList?			
+				
+				
 				listOfAthletes.add(athlete);
 				athleteList.setModel(athleteListModel);
 				athleteListModel.addElement(athlete);
 				
+				
+				athleteArrayList.add(athlete);
+				eventAthleteList.setModel(athleteEventListModel);
+				for(Athlete eventAthlete : athleteArrayList) {
+					athleteEventListModel.addElement(eventAthlete);
+				}
+				System.out.println(athleteArrayList);
 				System.out.println(athlete);
 				
 			}

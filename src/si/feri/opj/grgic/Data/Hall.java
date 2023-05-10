@@ -29,7 +29,9 @@ public class Hall extends Venue {
 
 	@Override
 	public String toString() {
-		return super.toString() + " " +numberOfAdditionalHalls;
+		
+		String addHallsNumber = (numberOfAdditionalHalls == 0) ? " " : Integer.toString(numberOfAdditionalHalls);
+		return super.toString() + " " + addHallsNumber;
 	}
 	
 	

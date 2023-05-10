@@ -4,7 +4,10 @@ package si.feri.opj.grgic.Data;
  * @author domagoj.grgic
  *
  */
-public class Event {
+
+import java.io.Serializable;  
+
+public class Event implements Serializable {
 	protected String name;
     protected Schedule schedule;
     protected boolean cancelled = false;
@@ -64,7 +67,7 @@ public class Event {
     public String toString()
     {
     	String isCancelled = cancelled ? " is cancelled" : " is happening";
-    	return name + " event is scheduled on " + schedule +" " + isCancelled;
+    	return "Name: " + name + ", schedule: " + schedule +" " + isCancelled;
     }
 
 }
