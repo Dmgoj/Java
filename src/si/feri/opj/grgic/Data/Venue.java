@@ -1,20 +1,28 @@
 // Adds Venue class the package si.feri.opj.grgić.Data
 package si.feri.opj.grgic.Data;
 
+import java.io.Serializable;  
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The Venue class represents a venue.
  *
  * @author Domagoj Grgic
  */
-public abstract class Venue {
+public abstract class Venue implements Serializable {
 	// Set attributes
 	protected String name;
 	private String phoneNumber;
 	protected Match[] listOfMatches;
 	private int numberOfMatches;
 	private Discipline discipline;
+	
+	
+
+	
+
 
 	public Discipline getDiscipline() {
 		return discipline;
@@ -91,6 +99,11 @@ public abstract class Venue {
 			}
 		}
 	}
+	
+	public Match[] getListOfMatches() {
+		return listOfMatches;
+	}
+
 
 	/**
 	 * removes all matches from the venue
@@ -112,9 +125,20 @@ public abstract class Venue {
 
 	@Override
 	public String toString() {
-		return "Venue [name=" + name + ", phoneNumber=" + phoneNumber + ", listOfMatches="
-				+ Arrays.toString(listOfMatches) + ", numberOfMatches=" + numberOfMatches + ", discipline=" + discipline
-				+ "]";
+		
+		String matches = " ";
+			for (int i = 0; i < listOfMatches.length; i++) {
+				if (listOfMatches[i] != null)
+					matches = listOfMatches[i].getName();
+		}
+		
+//		String matchesList = Arrays.stream(listOfMatches)
+//		        .filter(Objects::nonNull)
+//		        .map(Objects::toString)
+//		        .collect(Collectors.joining(", "));
+		
+		return "Venue name:" + name + ", phone number:" + phoneNumber + ", list of matches:"
+				+ matches + ", number of matches:" + numberOfMatches + ", discipline:" + discipline;
 	}
 
 

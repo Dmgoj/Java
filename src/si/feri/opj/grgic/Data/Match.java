@@ -1,6 +1,8 @@
 // Adds Match class to the package si.feri.opj.grgić.Data
 package si.feri.opj.grgic.Data;
 
+import java.io.Serializable;  
+
 // Imports java.time and util package
 import java.time.*;
 import java.util.*;
@@ -12,7 +14,7 @@ import java.util.*;
  * 
  * @author Domagoj Grgic
  */
-public class Match extends Event implements Competition {
+public class Match extends Event implements Competition, Serializable {
 	// Declare attributes
 	/*
 	 * private String name; private Schedule schedule; private boolean cancelled =
@@ -185,12 +187,12 @@ public class Match extends Event implements Competition {
 	 */
 	@Override
 	public String toString() {
-		String temp = ". List of athletes: ";
-		for (int i = 0; i < athletesList.length; i++) {
-			if (athletesList[i] != null)
-				temp = temp + athletesList[i].getName() + ", ";
-		}
-		return super.toString() + " " + temp;
+		//String temp = ". Click on \"Athletes\" to see the list of athletes: ";
+//		for (int i = 0; i < athletesList.length; i++) {
+//			if (athletesList[i] != null)
+//				temp = temp + athletesList[i].getName() + ", ";
+//		}
+		return super.toString() ;
 	}
 
 	@Override

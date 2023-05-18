@@ -117,7 +117,7 @@ public class Launcher
         
         Stadium noviStadion = new Stadium("Bla", "+3861234567", 2);
         
-        Hall hall = new Hall("Ledena", "+3861234567", 1, 1);
+        Hall hall = new Hall("Ledena", "+3861234567", 1);
         hall.setDiscipline(Discipline.VOLLEYBALL);
         System.out.println(hall);
         try {

@@ -107,7 +107,7 @@ public class Training extends Event
     @Override
     public String toString()
     {
-    	return super.toString() + " " + trainerName;
+    	return super.toString() + " ";
     }
     
 }

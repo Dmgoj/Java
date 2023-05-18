@@ -3,6 +3,8 @@ package si.feri.opj.grgic.Data;
 // Imports java.time s
 import java.time.*;
 
+import java.io.Serializable;  
+
 /**
  * Athlete class represents an Athlete with name, surname, athlete number and date of birth.
  * Class contains methods to set and get athlete's name,surname, number and date of birth.
@@ -155,7 +157,7 @@ public class Athlete implements Competition
     @Override
     public String toString()
     {
-    	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " ";
+    	return name +" "+ surname + " " + athleteNumber+ " " + dateOfBirth + " " + discipline;
     }
 
 	@Override
